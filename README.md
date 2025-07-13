@@ -1,111 +1,108 @@
-# 🧬 Scenario 5: Genomics - Cancer Subtype Classification using Gene Expression Data (Deep Learning)
+# 🎯 Breast Cancer Subtype Classification Using Deep Learning
 
-## 📌 Business Objective
-
-To build a deep learning model that classifies breast cancer subtypes using gene expression profiles from tumor samples.  
-This supports **personalized medicine** by helping pathologists:
-- ✅ Improve diagnosis speed & accuracy  
-- ✅ Align patients with targeted therapies (e.g., hormone therapy or HER2 inhibitors)  
-- ✅ Reduce overtreatment and improve outcomes  
+This project applies a deep neural network to classify molecular subtypes of breast cancer using gene expression profiles from the METABRIC dataset. The model supports precision oncology by enabling more accurate, faster, and personalized treatment decisions.
 
 ---
 
-## 🎯 Target Variable
+## 💡 Business Objective
 
-**`pam50_+_claudin-low_subtype`**  
-A categorical label indicating breast cancer molecular subtype:
-- Luminal A (LumA)  
-- Luminal B (LumB)  
-- HER2-enriched  
-- Basal-like  
-- Claudin-low  
+Current breast cancer diagnostic methods are manual, time-consuming, and often imprecise. Our solution uses machine learning to:
+- Improve diagnostic accuracy (≥75% test accuracy, high F1 score)
+- Enable faster, consistent subtype classification for treatment planning
+- Provide explainable outputs to build clinician trust
+- Reduce manual review time through pre-classification
+- Support scalable deployment across hospital systems
+
+---
+
+## 🧠 Model Overview
+
+| Component         | Details                                               |
+|------------------|--------------------------------------------------------|
+| Model Type        | Multi-Layer Perceptron (MLP) for multi-class classification |
+| Target Variable   | `pam50_+_claudin-low_subtype` (6 subtypes: LumA, LumB, HER2, Basal, Claudin-low, Normal) |
+| Features          | Top 500 most variable gene expression z-scores       |
+| Metrics           | Accuracy, Macro F1, ROC AUC, Confusion Matrix        |
+| Framework         | TensorFlow / Keras                                   |
 
 ---
 
 ## 🧬 Data Sources
 
-- **Dataset**: `METABRIC_RNA_Mutation.csv` from Kaggle  
-- Includes:
-  - Gene expression z-scores  
-  - Mutation status for many cancer-related genes  
-  - Clinical subtype labels and demographic info  
-
-📌 [Kaggle METABRIC Dataset](https://www.kaggle.com/datasets/raghadalharbi/breast-cancer-gene-expression-profiles-metabric)
+- **Gene expression data**: ~20,000 genes per sample (z-score normalized)
+- **Labels**: Pathologist-annotated cancer subtype
+- **Source**: [`METABRIC_RNA_Mutation.csv`](https://www.kaggle.com/datasets/raghadalharbi/breast-cancer-gene-expression-profiles-metabric)
 
 ---
 
-## 🛠️ Feature Engineering
+## ⚙️ Pipeline
 
-**Input Features:**
-- Gene expression columns (z-scores)
-- *(Optional)* Mutation status as binary features
-
-**Preprocessing Steps:**
-- Drop rows with missing subtype labels
-- One-hot encode target variable
-- *(Optional)* Select top variance genes
-- Ensure all input features are numeric and standardized
+1. Data cleaning + label encoding  
+2. Top gene selection via variance thresholding  
+3. Feature scaling (StandardScaler)  
+4. Model training with callbacks (EarlyStopping, ReduceLROnPlateau)  
+5. Evaluation: Accuracy, F1 Score, ROC, Confusion Matrix  
+6. Patient-level predictions with confidence scores
 
 ---
 
-## 🤖 Model Selection
+## 📈 Key Results
 
-**Primary Model:**  
-- Deep Neural Network (Multi-Layer Perceptron) using TensorFlow or PyTorch
-
-**Architecture:**
-- Input: Number of selected genes (e.g., 500–2000)
-- Hidden Layers: 2–3 Dense layers with ReLU + Dropout
-- Output Layer: Softmax for multi-class classification
-
-**Baseline Models:**  
-- Logistic Regression  
-- Random Forest  
+- **Test Accuracy**: ~76%  
+- **Macro F1 Score**: ~0.75  
+- **Weighted F1 Score**: ~0.76–0.77  
+- Strong performance across common subtypes; room to improve rare classes
 
 ---
 
-## 📏 Validation Strategy
+## 🧪 Proof of Concept – `patient_A`
 
-- Split: 70% Train / 15% Validation / 15% Test
-- Optional: Stratified K-Fold Cross-Validation
-
-**Evaluation Metrics:**
-- Accuracy  
-- F1-Score (Macro + Per Class)  
-- Confusion Matrix  
-- ROC-AUC (Per Class)  
+- Age 55, Stage IIa, HER2+, ER+, PR–
+- Model confidently predicted `HER2-enriched` subtype  
+- Visualized using PCA & UMAP overlays  
+- **Impact**: Supports HER2-targeted therapy → avoids broad chemo toxicity
 
 ---
 
-## 💻 Implementation
+## 🖼️ Visualizations
 
-**Language & Tools:**
-- Python  
-- Libraries: `Pandas`, `NumPy`, `Scikit-learn`, `TensorFlow/Keras` or `PyTorch`
-
-**Pipeline Steps:**
-1. Load and clean the dataset  
-2. Encode subtype labels  
-3. Select and scale features  
-4. Build and train deep learning model  
-5. Evaluate and tune  
-6. Save model and predictions  
+- PCA and UMAP cluster plots (with patient overlay)  
+- Confusion matrix heatmap  
+- ROC curves per subtype  
+- Confidence bar chart for patient-level prediction  
+- Training/validation loss and accuracy curves
 
 ---
 
-## 📊 Visualization & Reporting
+## 🔒 Compliance & Deployment
 
-- 📈 PCA/UMAP plots showing gene expression clusters  
-- 📊 Confusion matrix heatmap  
-- 📉 ROC curve per subtype  
-- 📉 Training/validation loss and accuracy curves  
-
-**Final report includes:**
-- Business Objective  
-- Dataset Summary  
-- Model Architecture  
-- Evaluation Results  
-- Clinical Relevance  
+- PDPA 2012, Health Information Bill (2025-ready)  
+- HSA AI-SaMD pathway supported  
+- Modular deployment via HEALIX platform or Flask app
 
 ---
+
+## 🔮 What’s Next?
+
+- Link predictions to clinical endpoints (OS, DFS)  
+- Improve rare subtype prediction with advanced architectures (1D CNN, XGBoost)  
+- Deploy on real-world patient registries across Asia  
+- Prepare for HSA sandbox and market launch
+
+---
+
+## 📚 References
+
+- Cortés et al., NEJM (2022)  
+- Escrivá-de-Romaní et al., Therapeutic Advances in Oncology (2022)  
+- Modi et al., JCO (2022)  
+- Loibl et al., Lancet Oncology (2021)
+
+---
+
+## 👩‍🔬 Authors
+
+Team 3 – Cancer Subtype Classification (Scenario 5, Genomics)
+
+
 
