@@ -1,10 +1,10 @@
-# 🎯 Breast Cancer Subtype Classification Using Deep Learning
+#  Breast Cancer Subtype Classification Using Deep Learning
 
 This project applies a deep neural network to classify molecular subtypes of breast cancer using gene expression profiles from the METABRIC dataset. The model supports precision oncology by enabling more accurate, faster, and personalized treatment decisions.
 
 ---
 
-## 💡 Business Objective
+##  Business Objective
 
 Current breast cancer diagnostic methods are manual, time-consuming, and often imprecise. Our solution uses machine learning to:
 - Improve diagnostic accuracy (≥75% test accuracy, high F1 score)
@@ -15,7 +15,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## 🧠 Model Overview
+##  Model Overview
 
 | Component         | Details                                               |
 |------------------|--------------------------------------------------------|
@@ -27,7 +27,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## 🧬 Data Sources
+##  Data Sources
 
 - **Gene expression data**: ~20,000 genes per sample (z-score normalized)
 - **Labels**: Pathologist-annotated cancer subtype
@@ -35,7 +35,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## ⚙️ Pipeline
+## ⚙Pipeline
 
 1. Data cleaning + label encoding  
 2. Top gene selection via variance thresholding  
@@ -46,7 +46,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## 📈 Key Results
+##  Key Results
 
 - **Test Accuracy**: ~76%  
 - **Macro F1 Score**: ~0.75  
@@ -55,7 +55,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## 🧪 Proof of Concept – `patient_A`
+## � Proof of Concept – `patient_A`
 
 - Age 55, Stage IIa, HER2+, ER+, PR–
 - Model confidently predicted `HER2-enriched` subtype  
@@ -64,7 +64,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## 🖼️ Visualizations
+##  Visualizations
 
 - PCA and UMAP cluster plots (with patient overlay)  
 - Confusion matrix heatmap  
@@ -74,7 +74,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## 🔒 Compliance & Deployment
+##  Compliance & Deployment
 
 - PDPA 2012, Health Information Bill (2025-ready)  
 - HSA AI-SaMD pathway supported  
@@ -82,7 +82,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## 🔮 What’s Next?
+##  What’s Next?
 
 - Link predictions to clinical endpoints (OS, DFS)  
 - Improve rare subtype prediction with advanced architectures (1D CNN, XGBoost)  
@@ -91,7 +91,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## 📚 References
+##  References
 
 - Cortés et al., NEJM (2022)  
 - Escrivá-de-Romaní et al., Therapeutic Advances in Oncology (2022)  
@@ -100,7 +100,7 @@ Current breast cancer diagnostic methods are manual, time-consuming, and often i
 
 ---
 
-## 👩‍🔬 Authors
+##  Authors
 
 Team 3 – Cancer Subtype Classification (Scenario 5, Genomics)
 
